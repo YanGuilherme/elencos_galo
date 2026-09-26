@@ -1,0 +1,20 @@
+{
+  "name": "janela-galo",
+  "private": true,
+  "workspaces": [
+    "core",
+    "input",
+    "output"
+  ],
+  "scripts": {
+    "dev": "concurrently -n core,api,web -c yellow,blue,green \"npm run build -w @janela-galo/core -- --watch\" \"npm run dev -w @janela-galo/output\" \"npm run dev -w @janela-galo/input\"",
+    "dev:api": "npm run dev -w @janela-galo/output",
+    "dev:web": "npm run dev -w @janela-galo/input",
+    "build": "npm run build -w @janela-galo/core && npm run build -w @janela-galo/input && npm run build -w @janela-galo/output",
+    "test": "npm run test -w @janela-galo/core && npm run test -w @janela-galo/output",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
