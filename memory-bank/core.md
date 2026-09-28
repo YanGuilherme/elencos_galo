@@ -122,7 +122,7 @@ interface Comparativo {
 
 Regras:
 
-- Os dois ids de elenco são obrigatórios e **distintos**.
+- Os dois ids de elenco são obrigatórios; podem ser iguais para comparar um elenco consigo mesmo.
 - Toda posição do enum tem um valor. Default de fábrica: `IGUAL`.
 - Trocar um elenco (carregar outro `2025-1` / `2026-2`) **não** apaga os valores sozinho — a produção pode querer manter o debate. Reset é ação explícita da UI (`resetComparativo`).
 - Estado do comparativo **não persiste**. Refresh volta ao default. O artefato é o print da tela.

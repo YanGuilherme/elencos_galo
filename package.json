@@ -11,7 +11,9 @@
     "dev:api": "npm run dev -w @janela-galo/output",
     "dev:web": "npm run dev -w @janela-galo/input",
     "build": "npm run build -w @janela-galo/core && npm run build -w @janela-galo/input && npm run build -w @janela-galo/output",
-    "test": "npm run test -w @janela-galo/core && npm run test -w @janela-galo/output",
+    "test": "npm run test -w @janela-galo/core && npm run test -w @janela-galo/output && npm run test:import",
+    "importar:elenco": "node scripts/importar-elenco.mjs",
+    "test:import": "node --test scripts/importar-elenco.test.mjs",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },
   "devDependencies": {

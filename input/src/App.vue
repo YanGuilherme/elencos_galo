@@ -19,7 +19,6 @@ import {
   type Posicao,
   type ValorComparacao,
 } from "@janela-galo/core";
-import { MOCK_ELENCOS, MOCK_ELENCOS_POR_ID } from "./mock";
 
 const API_URL = (import.meta.env.VITE_API_URL ?? "http://localhost:3000").replace(/\/$/, "");
 const rotulosPosicao: Record<Posicao, string> = {
@@ -45,25 +44,29 @@ const VALORES: ValorComparacao[] = [
   "DIR_MUITO_MELHOR",
 ];
 
-const elencosDisponiveis = ref<ElencoResumo[]>(MOCK_ELENCOS);
-const elencoEsq = ref<Elenco>(MOCK_ELENCOS_POR_ID["2025-1"]);
-const elencoDir = ref<Elenco>(MOCK_ELENCOS_POR_ID["2026-2"]);
-const cacheElencos = new Map<string, Elenco>(Object.entries(MOCK_ELENCOS_POR_ID));
-const comparativo = ref<Comparativo>(comparativoVazio(elencoEsq.value.id, elencoDir.value.id));
+const elencosDisponiveis = ref<ElencoResumo[]>([]);
+const elencoEsq = ref<Elenco | null>(null);
+const elencoDir = ref<Elenco | null>(null);
+const cacheElencos = new Map<string, Elenco>();
+const comparativo = ref<Comparativo | null>(null);
 const modoInteracao = ref<ModoInteracao>("ciclo");
 const seletorAberto = ref<Posicao | null>(null);
-const aviso = ref("Dados de demonstração. Conecte a API para carregar elencos reais.");
-const carregando = ref(false);
+const aviso = ref("");
+const carregando = ref(true);
 
-const gruposEsq = computed(() => agruparPorPosicao(elencoEsq.value));
-const gruposDir = computed(() => agruparPorPosicao(elencoDir.value));
+const gruposEsq = computed(() => (elencoEsq.value ? agruparPorPosicao(elencoEsq.value) : null));
+const gruposDir = computed(() => (elencoDir.value ? agruparPorPosicao(elencoDir.value) : null));
 
 async function obterElenco(id: string): Promise<Elenco> {
   const emCache = cacheElencos.get(id);
   if (emCache) return emCache;
   const resposta = await fetch(`${API_URL}/elencos/${encodeURIComponent(id)}`);
   if (!resposta.ok) throw new Error(`GET /elencos/${id} respondeu ${resposta.status}`);
-  const elenco: Elenco = await resposta.json();
+  const respostaJson: unknown = await resposta.json();
+  if (!respostaJson || typeof respostaJson !== "object") {
+    throw new Error(`A API retornou um elenco inválido para ${id}.`);
+  }
+  const elenco = respostaJson as Elenco;
   validarElenco(elenco);
   if (elenco.id !== id) throw new Error(`A API retornou ${elenco.id} para o pedido ${id}.`);
   cacheElencos.set(id, elenco);
@@ -71,37 +74,50 @@ async function obterElenco(id: string): Promise<Elenco> {
 }
 
 async function atualizarElencos(idEsq: string, idDir: string): Promise<void> {
+  const resumoEsq = elencosDisponiveis.value.find((elenco) => elenco.id === idEsq);
+  const resumoDir = elencosDisponiveis.value.find((elenco) => elenco.id === idDir);
+  if (!resumoEsq || !resumoDir) {
+    aviso.value = "Um dos elencos selecionados não está no índice carregado.";
+    return;
+  }
+
+  carregando.value = true;
   try {
-    if (idEsq === idDir) return;
-    const resumoEsq = elencosDisponiveis.value.find((elenco) => elenco.id === idEsq);
-    const resumoDir = elencosDisponiveis.value.find((elenco) => elenco.id === idDir);
-    if (!resumoEsq || !resumoDir) throw new Error("O elenco selecionado não está no índice.");
-    const [novoEsq, novoDir] = await Promise.all([obterElenco(idEsq), obterElenco(idDir)]);
+    const novoEsq = await obterElenco(idEsq);
+    const novoDir = idDir === idEsq ? novoEsq : await obterElenco(idDir);
     elencoEsq.value = novoEsq;
     elencoDir.value = novoDir;
-    comparativo.value = comElencos(comparativo.value, idEsq, idDir);
+    comparativo.value = comparativo.value
+      ? comElencos(comparativo.value, idEsq, idDir)
+      : comparativoVazio(idEsq, idDir);
     aviso.value = "";
   } catch (erro) {
     aviso.value = erro instanceof Error ? erro.message : "Não foi possível carregar o elenco.";
+  } finally {
+    carregando.value = false;
   }
 }
 
 function selecionarEsquerda(event: Event): void {
+  if (!elencoDir.value) return;
   const id = (event.target as HTMLSelectElement).value;
   void atualizarElencos(id, elencoDir.value.id);
 }
 
 function selecionarDireita(event: Event): void {
+  if (!elencoEsq.value) return;
   const id = (event.target as HTMLSelectElement).value;
   void atualizarElencos(elencoEsq.value.id, id);
 }
 
 function definirValor(posicao: Posicao, valor: ValorComparacao): void {
+  if (!comparativo.value) return;
   comparativo.value = comValor(comparativo.value, posicao, valor);
   seletorAberto.value = null;
 }
 
 function clicarComparativo(posicao: Posicao): void {
+  if (!comparativo.value) return;
   if (modoInteracao.value === "ciclo") {
     definirValor(posicao, cicloProximo(comparativo.value.valores[posicao]));
   } else if (modoInteracao.value === "seletor") {
@@ -112,6 +128,7 @@ function clicarComparativo(posicao: Posicao): void {
 }
 
 function moverComparativo(posicao: Posicao, direcao: "esq" | "dir"): void {
+  if (!comparativo.value) return;
   const proximo = passoSeta(comparativo.value.valores[posicao], direcao);
   definirValor(posicao, proximo);
 }
@@ -122,8 +139,8 @@ async function carregarDaApi(): Promise<void> {
     const respostaIndice = await fetch(`${API_URL}/elencos`);
     if (!respostaIndice.ok) throw new Error(`GET /elencos respondeu ${respostaIndice.status}`);
     const indice: unknown = await respostaIndice.json();
-    if (!Array.isArray(indice) || indice.length < 2) {
-      throw new Error("O índice da API precisa conter ao menos dois elencos.");
+    if (!Array.isArray(indice) || indice.length < 1) {
+      throw new Error("O índice da API não contém elencos.");
     }
     const resumos = indice as ElencoResumo[];
     const idsResumos = new Set<string>();
@@ -148,43 +165,19 @@ async function carregarDaApi(): Promise<void> {
       throw new Error("O índice da API contém resumo inválido ou ID duplicado.");
     }
 
-    const idEsq = resumos.some((elenco) => elenco.id === elencoEsq.value.id)
-      ? elencoEsq.value.id
-      : resumos[0].id;
-    const idDir = resumos.find((elenco) => elenco.id !== idEsq)?.id;
-    if (!idDir) throw new Error("A API não retornou dois elencos distintos.");
-
-    const [respostaEsq, respostaDir] = await Promise.all([
-      fetch(`${API_URL}/elencos/${encodeURIComponent(idEsq)}`),
-      fetch(`${API_URL}/elencos/${encodeURIComponent(idDir)}`),
-    ]);
-    if (!respostaEsq.ok || !respostaDir.ok) {
-      throw new Error(`Falha ao carregar elencos (HTTP ${respostaEsq.status}/${respostaDir.status}).`);
-    }
-    const [dadosEsq, dadosDir]: [Elenco, Elenco] = await Promise.all([
-      respostaEsq.json(),
-      respostaDir.json(),
-    ]);
-    validarElenco(dadosEsq);
-    validarElenco(dadosDir);
-    if (dadosEsq.id !== idEsq || dadosDir.id !== idDir) {
-      throw new Error("A API retornou elencos diferentes dos IDs solicitados.");
-    }
-
     elencosDisponiveis.value = resumos;
-    cacheElencos.set(dadosEsq.id, dadosEsq);
-    cacheElencos.set(dadosDir.id, dadosDir);
-    elencoEsq.value = dadosEsq;
-    elencoDir.value = dadosDir;
-    comparativo.value = comElencos(comparativo.value, dadosEsq.id, dadosDir.id);
-    aviso.value = "";
+    const idAtual = elencoEsq.value?.id;
+    const idInicial = idAtual && resumos.some((elenco) => elenco.id === idAtual)
+      ? idAtual
+      : resumos[0].id;
+    await atualizarElencos(idInicial, idInicial);
   } catch (erro) {
     const detalhe = erro instanceof Error ? erro.message : "erro desconhecido";
-    aviso.value = `API indisponível (${detalhe}). Usando dados de demonstração.`;
-    elencosDisponiveis.value = MOCK_ELENCOS;
-    elencoEsq.value = MOCK_ELENCOS_POR_ID["2025-1"];
-    elencoDir.value = MOCK_ELENCOS_POR_ID["2026-2"];
-    comparativo.value = comElencos(comparativo.value, elencoEsq.value.id, elencoDir.value.id);
+    aviso.value = `Não foi possível carregar elencos da API: ${detalhe}`;
+    elencosDisponiveis.value = [];
+    elencoEsq.value = null;
+    elencoDir.value = null;
+    comparativo.value = null;
   } finally {
     carregando.value = false;
   }
@@ -200,16 +193,16 @@ onMounted(carregarDaApi);
       <div class="toolbar-controls">
         <label class="select-control">
           <span>Esquerda</span>
-          <select :value="elencoEsq.id" @change="selecionarEsquerda">
-            <option v-for="elenco in elencosDisponiveis" :key="elenco.id" :value="elenco.id" :disabled="elenco.id === elencoDir.id">
+          <select :value="elencoEsq?.id ?? ''" :disabled="carregando || elencosDisponiveis.length === 0" @change="selecionarEsquerda">
+            <option v-for="elenco in elencosDisponiveis" :key="elenco.id" :value="elenco.id">
               {{ elenco.id }}
             </option>
           </select>
         </label>
         <label class="select-control">
           <span>Direita</span>
-          <select :value="elencoDir.id" @change="selecionarDireita">
-            <option v-for="elenco in elencosDisponiveis" :key="elenco.id" :value="elenco.id" :disabled="elenco.id === elencoEsq.id">
+          <select :value="elencoDir?.id ?? ''" :disabled="carregando || elencosDisponiveis.length === 0" @change="selecionarDireita">
+            <option v-for="elenco in elencosDisponiveis" :key="elenco.id" :value="elenco.id">
               {{ elenco.id }}
             </option>
           </select>
@@ -225,7 +218,7 @@ onMounted(carregarDaApi);
             {{ modo.label }}
           </button>
         </div>
-        <button class="reset-button" type="button" @click="comparativo = resetComparativo(comparativo)">
+        <button class="reset-button" type="button" :disabled="!comparativo || carregando" @click="comparativo && (comparativo = resetComparativo(comparativo))">
           Reset comparativo
         </button>
       </div>
@@ -234,9 +227,9 @@ onMounted(carregarDaApi);
       </button>
     </header>
 
-    <p v-if="aviso" class="source-notice" role="status">{{ aviso }}</p>
+    <p v-if="aviso && elencoEsq && elencoDir" class="source-notice" role="status">{{ aviso }}</p>
 
-    <section class="broadcast" aria-label="Comparativo de elencos">
+    <section v-if="elencoEsq && elencoDir && comparativo && gruposEsq && gruposDir" class="broadcast" aria-label="Comparativo de elencos">
       <RosterPanel :elenco="elencoEsq" :grupos="gruposEsq" :rotulos="rotulosPosicao" />
 
       <section class="center-panel">
@@ -293,6 +286,9 @@ onMounted(carregarDaApi);
       </section>
 
       <RosterPanel :elenco="elencoDir" :grupos="gruposDir" :rotulos="rotulosPosicao" />
+    </section>
+    <section v-else class="load-state" role="status">
+      {{ carregando ? "Carregando elencos…" : aviso }}
     </section>
 
     <footer class="broadcast-footer">

@@ -55,9 +55,6 @@ export function validarComparativo(comparativo: Comparativo): void {
   if (!ELENCO_ID_RE.test(comparativo.elencoDireitaId)) {
     throw new DominioErro("elencoDireitaId inválido");
   }
-  if (comparativo.elencoEsquerdaId === comparativo.elencoDireitaId) {
-    throw new DominioErro("Elencos da comparação precisam ser distintos");
-  }
   if (!comparativo.valores || typeof comparativo.valores !== "object") {
     throw new DominioErro("Comparativo sem valores por posição");
   }

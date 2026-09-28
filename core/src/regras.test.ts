@@ -68,8 +68,11 @@ describe("agruparPorPosicao", () => {
 });
 
 describe("comparativoVazio", () => {
-  it("rejeita o mesmo elenco dos dois lados", () => {
-    assert.throws(() => comparativoVazio("2025-1", "2025-1"));
+  it("permite comparar o elenco consigo mesmo", () => {
+    const comparativo = comparativoVazio("2025-2", "2025-2");
+    assert.equal(comparativo.elencoEsquerdaId, "2025-2");
+    assert.equal(comparativo.elencoDireitaId, "2025-2");
+    assert.equal(comparativo.valores.GOLEIRO, "IGUAL");
   });
 
   it("mantém os valores ao trocar os elencos", () => {

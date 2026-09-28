@@ -72,7 +72,7 @@ Save/load de UI: `melhorias_futuras.md`.
 
 Toda mutação de valor passa por função do core. O composable de input chama a API (`output`) e hidrata via core.
 
-Na implementação atual, `input/` tem dados de demonstração enquanto não há elencos locais configurados. A tela tenta carregar o índice e os dois elencos iniciais pela API; em caso de falha informa o motivo e mantém os mocks como fallback. A URL da API pode ser definida com `VITE_API_URL` (padrão `http://localhost:3000`). Elencos adicionais do índice são carregados sob demanda pela mesma API. O Vite lê as variáveis do `.env` da raiz do monorepo.
+`input/` não contém elencos embutidos nem fallback de demonstração. Carrega o índice pela API e abre o primeiro elenco nos dois lados por padrão; o operador pode escolher qualquer elenco em cada seletor, inclusive o mesmo nos dois lados. A URL da API pode ser definida com `VITE_API_URL` (padrão `http://localhost:3000`). Elencos adicionais do índice são carregados sob demanda pela mesma API. O Vite lê as variáveis do `.env` da raiz do monorepo. A origem dos arquivos fica configurada no servidor com `ELENCOS_SOURCE=classpath` ou `ELENCOS_SOURCE=s3`.
 
 ## O que o input NÃO faz
 

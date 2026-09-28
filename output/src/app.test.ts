@@ -44,6 +44,12 @@ describe("API de elencos", () => {
     assert.equal(resposta.headers["access-control-allow-origin"], "http://localhost:5173");
   });
 
+  it("informa no health check qual origem de dados foi configurada", async () => {
+    const resposta = await criarAppTeste().inject({ method: "GET", url: "/health" });
+    assert.equal(resposta.statusCode, 200);
+    assert.deepEqual(resposta.json(), { ok: true, store: "test" });
+  });
+
   it("retorna um elenco existente e valida o formato do ID", async () => {
     const app = criarAppTeste();
     const resposta = await app.inject({ method: "GET", url: "/elencos/2025-1" });

@@ -1,18 +1,24 @@
+import { loadEnvFile } from "node:process";
+import { fileURLToPath } from "node:url";
 import { criarApp } from "./app.js";
-import { storeLocal } from "./store-local.js";
-import { storeS3 } from "./store-s3.js";
-import type { ElencoStore } from "./store.js";
+import { criarStore } from "./store-factory.js";
 
-function criarStore(): ElencoStore {
-  const bucket = process.env.S3_BUCKET;
-  if (bucket) {
-    return storeS3(bucket, process.env.AWS_REGION ?? "sa-east-1");
+try {
+  loadEnvFile(fileURLToPath(new URL("../../.env", import.meta.url)));
+} catch (error) {
+  if (
+    !error ||
+    typeof error !== "object" ||
+    !("code" in error) ||
+    error.code !== "ENOENT"
+  ) {
+    throw error;
   }
-  return storeLocal();
 }
 
 const store = criarStore();
+const source = process.env.ELENCOS_SOURCE ?? "classpath";
 const port = Number(process.env.PORT ?? 3000);
-const app = criarApp(store, process.env.CORS_ORIGIN ?? "http://localhost:5173");
+const app = criarApp(store, process.env.CORS_ORIGIN ?? "http://localhost:5173", source);
 
 await app.listen({ port, host: "0.0.0.0" });

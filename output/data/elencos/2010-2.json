@@ -1,0 +1,585 @@
+{
+  "id": "2010-2",
+  "rotulo": "ELENCO 2010-2",
+  "ano": 2010,
+  "janela": 2,
+  "jogadores": [
+    {
+      "id": "52916",
+      "nome": "Fábio Costa",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/52916-1723388910.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "GOLEIRO"
+      ]
+    },
+    {
+      "id": "116420",
+      "nome": "Giovanni",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/116420-1613391505.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "GOLEIRO"
+      ]
+    },
+    {
+      "id": "75071",
+      "nome": "Aranha",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_75071_221_2012_2.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "GOLEIRO"
+      ]
+    },
+    {
+      "id": "141210",
+      "nome": "Lee Oliveira",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/141210-1446645691.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "GOLEIRO"
+      ]
+    },
+    {
+      "id": "95142",
+      "nome": "Renan Ribeiro",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "GOLEIRO"
+      ]
+    },
+    {
+      "id": "75437",
+      "nome": "Werley",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/75437-1620117251.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "72489",
+      "nome": "Réver",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/72489-1662403930.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "54503",
+      "nome": "Leonardo Fabiano da Silva e Silva",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/54503-1553780765.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "179023",
+      "nome": "Paulo Victor",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_179023_330_2012_2.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "GOLEIRO"
+      ]
+    },
+    {
+      "id": "18733",
+      "nome": "Julio César Cáceres López",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/18733-1687211259.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "75432",
+      "nome": "Welton Felipe",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_75432_17561_2010_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "53011",
+      "nome": "Lima",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_53011_10247_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "37371",
+      "nome": "Jairo Rolando Campos León",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/37371-1751017388.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "178373",
+      "nome": "Luiz Eduardo Rodrigues",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_178373_291_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ZAGUEIRO"
+      ]
+    },
+    {
+      "id": "53965",
+      "nome": "Guilherme Santos",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/53965-1681557112.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_ESQUERDO"
+      ]
+    },
+    {
+      "id": "20401",
+      "nome": "Leandro",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_20401_330_2010_3.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_ESQUERDO"
+      ]
+    },
+    {
+      "id": "79447",
+      "nome": "Eron",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_79447_3197_2012_2.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_ESQUERDO"
+      ]
+    },
+    {
+      "id": "50541",
+      "nome": "Triguinho",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/50541-1720055507.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_ESQUERDO"
+      ]
+    },
+    {
+      "id": "75435",
+      "nome": "Marcos Rocha",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/75435-1543836089.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_DIREITO"
+      ]
+    },
+    {
+      "id": "101470",
+      "nome": "Rafael Cruz Ojer",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_101470_15172_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_DIREITO"
+      ]
+    },
+    {
+      "id": "54145",
+      "nome": "Fernandinho",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_54145_291_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_ESQUERDO"
+      ]
+    },
+    {
+      "id": "95087",
+      "nome": "Patric",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/95087-1547647025.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_DIREITO"
+      ]
+    },
+    {
+      "id": "83513",
+      "nome": "Sheslon",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_83513_17561_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_DIREITO"
+      ]
+    },
+    {
+      "id": "121046",
+      "nome": "Carlos César",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/121046-1553781689.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "LATERAL_DIREITO"
+      ]
+    },
+    {
+      "id": "58368",
+      "nome": "Zé Luis",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_58368_309_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "VOLANTE"
+      ]
+    },
+    {
+      "id": "53275",
+      "nome": "Pierre",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/53275-1720055396.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "VOLANTE"
+      ]
+    },
+    {
+      "id": "22943",
+      "nome": "Dudu Cearense",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/22943-1551086107.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "186526",
+      "nome": "Gilberto Jr",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_186526_2863_2010_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "VOLANTE"
+      ]
+    },
+    {
+      "id": "179030",
+      "nome": "Roger",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_179030_330_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "161891",
+      "nome": "Filipe Soutto",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/161891-1663321078.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "VOLANTE"
+      ]
+    },
+    {
+      "id": "16159",
+      "nome": "Richarlyson",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/16159-1583847266.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "52976",
+      "nome": "Serginho",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/52976-1663092836.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "VOLANTE"
+      ]
+    },
+    {
+      "id": "105509",
+      "nome": "Alê",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_105509_2035_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "VOLANTE"
+      ]
+    },
+    {
+      "id": "112506",
+      "nome": "Diego Macedo Prado dos Santos",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_112506_8793_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA",
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "53062",
+      "nome": "Toró",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/53062-1569257927.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "15695",
+      "nome": "Fabiano",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_15695_2035_2010_2.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "2816",
+      "nome": "Édison Vicente Méndez Méndez",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/2816-1669024443.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "179647",
+      "nome": "Lelêu",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_179647_330_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "83906",
+      "nome": "Jackson Caucaia",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/83906-1561451860.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "54160",
+      "nome": "Guilherme",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/54160-1450292158.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "74198",
+      "nome": "Renan Oliveira",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/74198-1681747028.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "16223",
+      "nome": "Daniel da Silva Carvalho",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/16223-1592215259.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "13833",
+      "nome": "Ricardinho",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/13833-1589802963.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "149572",
+      "nome": "Nikão",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/149572-1697289686.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "125513",
+      "nome": "Giovanni Augusto",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/125513-1759511182.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "106082",
+      "nome": "Caio",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_106082_3197_2012_2.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "147440",
+      "nome": "Didira",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_147440_20092_2012_2.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "MEIA"
+      ]
+    },
+    {
+      "id": "37536",
+      "nome": "Diego Tardelli",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/37536-1413038743.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "175169",
+      "nome": "Bernard",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/175169-1520412519.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "33315",
+      "nome": "Diego Souza",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/33315-1454586915.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "15291",
+      "nome": "Mancini",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/15291-1565176905.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "125519",
+      "nome": "Valdisney Costa dos Santos",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_125519_3270_2010_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "109652",
+      "nome": "Neto Berola",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/109652-1678898098.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "53076",
+      "nome": "Obina",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/53076-1628638813.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "247900",
+      "nome": "Jônatas Obina",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/default.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "141476",
+      "nome": "Wesley",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_141476_15172_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "104509",
+      "nome": "André Felipe",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/104509-1679580727.png?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "82972",
+      "nome": "Marquinhos",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/82972-1620307576.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "110650",
+      "nome": "Ricardo Bueno",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/110650-1661909799.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "129129",
+      "nome": "João Pedro",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/129129-1665589260.png?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "68403",
+      "nome": "Jheimy Carvalho",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/68403-1703187921.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "154901",
+      "nome": "Magno Alves",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_154901_2029_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "107026",
+      "nome": "Jóbson",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/s_107026_291_2012_1.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    },
+    {
+      "id": "121991",
+      "nome": "Wendel",
+      "fotoUrl": "https://img.a.transfermarkt.technology/portrait/header/default.jpg?lm=4711",
+      "janela": null,
+      "posicoes": [
+        "ATACANTE"
+      ]
+    }
+  ]
+}

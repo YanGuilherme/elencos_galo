@@ -1,6 +1,6 @@
 # Output — S3, API fina, persistência
 
-`output/` é a única camada que fala com o mundo externo. No v1 **só lê** S3 e expõe HTTP curto para o `input`.
+`output/` é a única camada que fala com o mundo externo. No v1 **só lê** elencos do classpath (arquivos locais do projeto) ou S3, conforme `ELENCOS_SOURCE`, e expõe HTTP curto para o `input`.
 
 O core não sabe que S3 existe. A API não contém regra de “como ciclar seta”. Sem write de comparativo, save ou foto no v1.
 
@@ -58,4 +58,17 @@ A API libera a origin do Vite (`localhost:5173` em dev, e o host do deploy). O b
 
 - Bucket real (dev) **ou** LocalStack/MinIO no compose, mesmo contrato.
 - Env: `AWS_REGION`, `S3_BUCKET`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` (nunca no `input/`).
+- `ELENCOS_SOURCE=classpath` (padrão) lê `output/data/elencos/`.
+- `ELENCOS_SOURCE=s3` lê `elencos/index.json` e `elencos/{id}.json` do bucket configurado em `S3_BUCKET`; sem bucket a API falha ao iniciar. Não há fallback silencioso entre fontes.
 
+## Importar jogadores em JSONL
+
+O importador `scripts/importar-elenco.mjs` converte um arquivo com um objeto JSON por linha no formato extraído do Transfermarkt para o contrato `Elenco`. Na raiz do repo:
+
+```bash
+npm run importar:elenco -- 2025-2 output/data/import/jogadores_atletico_mg.jsonl
+```
+
+Por padrão, grava/substitui `output/data/elencos/2025-2.json` e atualiza `output/data/elencos/index.json`, preservando os outros IDs do índice. Pode-se passar uma terceira opção para escolher a pasta de saída. Cada registro usa `/spieler/{id}` do `href` (ou `code`) como ID, combina `name`/`last_name`, copia `image_url`, converte `position` e atribui `janela` com base no mês de `joined` se o ano coincidir com o elenco. Datas sem valor ou de outro ano viram `null`. Posições não mapeadas, JSON malformado e IDs repetidos interrompem a importação antes de gravar o novo elenco.
+
+Arquivos brutos JSONL ficam em `output/data/import/`; essa pasta é só entrada do importador. A API local lê os arquivos gerados em `output/data/elencos/`.
